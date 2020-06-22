@@ -30,8 +30,19 @@ function Grid() {
   //Grid state
   const [grid, setGrid] = useState(twoDGrid);
 
-    return <div style={{ display: "flex", justifyContent: "center" }}
-    ></div>;
+  return (
+    <div style={{ display: "flex", justifyContent: "center" }}>
+      <div>
+        {grid.map((row, r_i) =>
+          row.map((col, col_i) => (
+            <div
+              style={{ border: "dotted 1px black", width: 20, height: 20 }}
+            />
+          ))
+        )}
+      </div>
+    </div>
+  );
 }
 
 export default Grid;
