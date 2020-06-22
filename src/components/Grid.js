@@ -23,16 +23,15 @@ function Grid() {
 
     return rows;
   }
-    
-    // 25 x 25 dimension
-    const twoDGrid = createDataStructure(25, 25)
 
-    //Grid state
-    const [grid, setGrid] = useState(twoDGrid)
-    
-    
+  // 25 x 25 dimension
+  const twoDGrid = createDataStructure(25, 25);
 
-  return <div></div>;
+  //Grid state
+  const [grid, setGrid] = useState(twoDGrid);
+
+    return <div style={{ display: "flex", justifyContent: "center" }}
+    ></div>;
 }
 
 export default Grid;
