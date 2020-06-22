@@ -35,7 +35,8 @@ function Grid() {
       <div>
         {grid.map((row, r_i) =>
           row.map((col, col_i) => (
-            <div
+              <div
+                key={`${r_i}+${col_i}`}
               style={{ border: "dotted 1px black", width: 20, height: 20 }}
             />
           ))
