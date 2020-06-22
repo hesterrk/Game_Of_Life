@@ -31,10 +31,12 @@ function Grid() {
   const [grid, setGrid] = useState(twoDGrid);
 
   return (
-    <div style={{ display: "flex", justifyContent: "center" }}>
-      <div>
+      <div style={{ display: "flex", justifyContent: "center" }}>
+          
+      <div style={{display: "grid", gridTemplateColumns: `repeat(25, 22px)`}}>
         {grid.map((row, r_i) =>
-          row.map((col, col_i) => (
+            row.map((col, col_i) => (
+              // returns the individual cell (box)
               <div
                 key={`${r_i}+${col_i}`}
               style={{ border: "dotted 1px black", width: 20, height: 20 }}
