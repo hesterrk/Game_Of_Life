@@ -7,6 +7,7 @@ function App() {
   return (
     <div className="App">
       <h1> Welcome To Conway's Game Of Life </h1>
+      <Controls />
       <Grid />
     </div>
   );
