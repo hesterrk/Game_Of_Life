@@ -1,19 +1,14 @@
 import React, { useEffect, useState } from "react";
 
 function Controls() {
+  // Start the game state
+  const [play, setPlay] = useState(false);
 
-    // Start the game state
-    const [play, setPlay] = useState(false)
-
-
-
-
-    return <div>
-        <button onClick={() => setPlay(!play)}>Play</button>
-
+  return (
+    <div>
+      <button onClick={() => setPlay(!play)}>{play ? "play" : "stop"}</button>
     </div>
-
+  );
 }
 
-
-export default Controls
+export default Controls;
