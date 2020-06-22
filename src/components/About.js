@@ -23,6 +23,8 @@ function About() {
         </li>
         <p></p>
       </ol>
+
+      <h3> About the Algorithm: </h3>
     </div>
   );
 }
