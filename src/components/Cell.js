@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import produce from "immer";
 
 //Passing in grid props from Grid component
@@ -19,9 +19,9 @@ function Cell({ grid, setGrid }) {
             onClick={() => {
               //Toggling each cell in the grid's own state
               //Using produce to prevent the mutation of the original grid state, instead we create a copy and change this copy in order to change and toggle the state
-              const toggleGrid = produce(grid, (copyState) => {
+              const toggleGrid = produce(grid, (copyGridState) => {
                 //assigning our copy state to value of our original state, whether the cell is alive or dead
-                copyState[r_i][col_i] = grid[r_i][col_i] === 0 ? 1 : 0;
+                copyGridState[r_i][col_i] = grid[r_i][col_i] === 0 ? 1 : 0;
               });
               setGrid(toggleGrid);
             }}
