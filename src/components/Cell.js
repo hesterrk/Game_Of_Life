@@ -1,7 +1,7 @@
 import React from "react";
 
 //Passing in grid props from Grid component
-function Cell({ r, c, toggleCellState, cellpos }) {
+function Cell({ r, c, toggleCellState, cellposition }) {
   return (
           // returns the individual cell (box)
           <div
@@ -9,7 +9,7 @@ function Cell({ r, c, toggleCellState, cellpos }) {
         border: "dotted 1px black",
         width: 20,
         height: 20,
-        background: cellpos === 0 ? "white" : "black",
+        backgroundColor: cellposition === 0 ? "white" : "black",
       }}
       onClick={toggleCellState(r, c)}
           />

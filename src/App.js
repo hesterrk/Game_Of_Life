@@ -30,7 +30,7 @@ function App() {
 
   //Grid state
   const [grid, setGrid] = useState(twoDGrid);
-  console.log(grid);
+  // console.log(grid);
 
   // Start the game/animation state
   const [play, setPlay] = useState(false);
@@ -64,7 +64,6 @@ function App() {
       }
     }
     setGrid(rows)
-    console.log(grid)
     return grid
    
  
@@ -86,15 +85,18 @@ function App() {
   function togglePlayState(e) {
     e.preventDefault();
     setPlay(!play);
+    
   }
 
-  const toggleCellState =  (r, c) => {
-    // e.preventDefault();
+  const toggleCellState = (r, c) => (e) => {
+    e.preventDefault();
+    console.log(grid[r][c], 'before')
     if (grid[r][c] === 0) {
-      grid[r][c] = 1;
+      gridRef.current[r][c] = 1;
     } else {
-      grid[r][c] = 0;
+      gridRef.current[r][c] = 0;
     }
+    console.log(gridRef.current[r][c], 'after')
   };
 
   // Animation Logic function, animation runs accordingly
@@ -178,7 +180,6 @@ function App() {
   };
 
   // We need to call our animation hook to run the animation
-
   useAnimationFrame(runGame);
 
   return (

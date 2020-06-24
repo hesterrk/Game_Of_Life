@@ -13,7 +13,7 @@ function Grid({ grid, toggleCellState }) {
               r={r_i}
               c={col_i}
               toggleCellState={toggleCellState}
-              cellpos={grid[r_i][col_i]}
+              cellposition={grid[r_i][col_i]}
             />
           ))
         )}
