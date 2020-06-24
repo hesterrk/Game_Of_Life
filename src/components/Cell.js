@@ -14,16 +14,18 @@ function Cell({ grid, setGrid }) {
               border: "dotted 1px black",
               width: 20,
               height: 20,
+              //if dead its white, if alive its black
               background: grid[r_i][col_i] === 0 ? "white" : "black",
             }}
             onClick={() => {
               //Toggling each cell in the grid's own state
               //Using produce to prevent the mutation of the original grid state, instead we create a copy and change this copy in order to change and toggle the state
-              const toggleGrid = produce(grid, (copyGridState) => {
+              const toggleGrid = produce(grid, (draftGState) => {
                 //assigning our copy state to value of our original state, whether the cell is alive or dead
-                copyGridState[r_i][col_i] = grid[r_i][col_i] === 0 ? 1 : 0;
+                draftGState[r_i][col_i] = grid[r_i][col_i] === 0 ? 1 : 0;
               });
               setGrid(toggleGrid);
+             
             }}
           />
         ))
