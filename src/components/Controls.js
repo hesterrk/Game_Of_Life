@@ -1,14 +1,10 @@
 import React, { useEffect, useState, useRef } from "react";
-import produce from "immer";
 import { useAnimationFrame } from './animeHook'
 
-function Controls({ grid, setGrid }) {
+function Controls({ play, clearGrid }) {
   // Start the game state
   const [play, setPlay] = useState(false);
-  // useRef hook: is a mutable object that persists a value across multiple re-renderings
-  //it has a 'current' property which allows us to read, write and change its value (without re-rendering the component)
-  // We are basing the animation on the user clicking 'start/stop' which is our play state, this will happen multiple times, but our function only runs once, so we want the latest value of our 'play' state (otherwise function doesnt keep up to date with what the current value of our play state is)
-  //So we are storing the current value of our state in ref, and accessing the value using the hook's current property
+
 
   const startingRef = useRef(play);
   //Assign the current value of play state to current property of the hook
@@ -117,27 +113,23 @@ function Controls({ grid, setGrid }) {
   /*useEffect(() => {
     return () => cancelAnimationFrame(startingRef.current);
   }, [play]);*/
-/*
-  if (play === true) {
-    console.log('play')
-    requestAnimationFrame(runGame);
-  }
-  */
+
+
   
   useAnimationFrame(runGame)
 
-  // For Clear button: creating an empty grid
-  function clearGrid() {
-    const rows = [];
-    for (let i = 0; i < 25; i++) {
-      const nestedCols = Array.from(new Array(25), () => {
-        return 0;
-      });
-      rows.push(nestedCols);
-    }
-    setGrid(rows);
-    return grid;
-  }
+  // // For Clear button: creating an empty grid
+  // function clearGrid() {
+  //   const rows = [];
+  //   for (let i = 0; i < 25; i++) {
+  //     const nestedCols = Array.from(new Array(25), () => {
+  //       return 0;
+  //     });
+  //     rows.push(nestedCols);
+  //   }
+  //   setGrid(rows);
+  //   return grid;
+  // }
 
   function randomPresetOne() {
     const rows = [];

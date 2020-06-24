@@ -1,40 +1,23 @@
-import React, { useState } from "react";
-// import produce from "immer";
+import React from "react";
 import Cell from "./Cell";
 
-function Grid() {
-  // Creating data structure: an row array with nested column arrays
-
-  function createDataStructure(rowsNum, colsNum) {
-    //Creating main row one-dimensional array which holds nested column arrays
-    //Each element in our row array will be an array (a column array)
-    const rows = [];
-
-    // For each row element in our rows array, we need the same number of columns
-    for (let i = 0; i < rowsNum; i++) {
-      console.log(rowsNum[i], "hi");
-      // Creating a nested column array for each row element (25)
-      // For each column array its getting the same length (25) and initialised withh 0's as we want our cells to be dead by default
-      const nestedCols = Array.from(new Array(colsNum), () => {
-        return 0;
-      });
-      // Adding our nested column arrays to our rows array
-      rows.push(nestedCols);
-    }
-    // Return the 2-dimensional array
-
-    return rows;
-  }
-
-  // 25 x 25 dimension
-  const twoDGrid = createDataStructure(25, 25);
-
-  //Grid state
-  const [grid, setGrid] = useState(twoDGrid);
-
+function Grid({ grid, toggle }) {
   return (
     <div style={{ display: "flex", justifyContent: "center" }}>
-      <Cell grid={grid} setGrid={setGrid} />
+      <div style={{ display: "grid", gridTemplateColumns: `repeat(25, 22px)` }}>
+        {grid.map((row, r_i) => 
+          row.map((col, col_i) => (
+            // returns the individual cell component (box)
+            <Cell
+              key={`${r_i}+${col_i}`}
+              r={r_i}
+              c={col_i}
+              toggle={toggle}
+              cellpos={grid[r_i][col_i]}
+            />
+        ))
+        )}
+      </div>
     </div>
   );
 }
