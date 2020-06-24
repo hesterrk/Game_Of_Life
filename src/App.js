@@ -19,7 +19,6 @@ function App() {
       // For each column array its getting the same length (25) and initialised withh 0's as we want our cells to be dead by default
       for (let j = 0; j < colsNum; j++) {
         let nestedCols = [i][j];
-        console.log(nestedCols);
         // Adding our nested column arrays to our rows array
         rows.push(nestedCols);
       }

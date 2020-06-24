@@ -5,7 +5,7 @@ function Grid({ grid, toggleCellState }) {
   return (
     <div style={{ display: "flex", justifyContent: "center" }}>
       <div style={{ display: "grid", gridTemplateColumns: `repeat(25, 22px)` }}>
-        {grid.map((row, r_i) => 
+        {grid.map((row, r_i) =>
           row.map((col, col_i) => (
             // returns the individual cell component (box)
             <Cell
@@ -15,7 +15,7 @@ function Grid({ grid, toggleCellState }) {
               toggleCellState={toggleCellState}
               cellpos={grid[r_i][col_i]}
             />
-        ))
+          ))
         )}
       </div>
     </div>
