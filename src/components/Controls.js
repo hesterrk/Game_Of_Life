@@ -12,17 +12,17 @@ function Controls({ play, clearGrid }) {
   const gridRef = useRef();
   gridRef.current = grid;
 
-  // Deals with edge cases: the cells on edge of grid that dont have some neighbours aka rows above row[0] and column[0] and after row 25 (index 24)
-  function getGSquare(i, j) {
-    if (i < 0 || j < 0) {
-      return null;
-    }
-    if (i > 24 || j > 24) {
-      return null;
-    }
+  // // Deals with edge cases: the cells on edge of grid that dont have some neighbours aka rows above row[0] and column[0] and after row 25 (index 24)
+  // function getGSquare(i, j) {
+  //   if (i < 0 || j < 0) {
+  //     return null;
+  //   }
+  //   if (i > 24 || j > 24) {
+  //     return null;
+  //   }
 
-    return grid[i][j];
-  }
+  //   return grid[i][j];
+  // }
 
   const runGame = (timestamp) => {
     //This function doesn't run if the start button hasnt been clicked

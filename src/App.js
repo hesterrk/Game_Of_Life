@@ -69,6 +69,17 @@ function App() {
   }
 
 
+// Deals with edge cases: the cells on edge of grid that dont have some neighbours aka rows above row[0] and column[0] and after row 25 (index 24)
+function getGSquare(i, j) {
+  if (i < 0 || j < 0) {
+    return null;
+  }
+  if (i > 24 || j > 24) {
+    return null;
+  }
+
+  return gridRef.current[i][j];
+} 
 
 
 
