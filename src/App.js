@@ -179,6 +179,8 @@ function App() {
 
   // We need to call our animation hook to run the animation
 
+  useAnimationFrame(runGame)
+
   return (
     <div
       className="App"
