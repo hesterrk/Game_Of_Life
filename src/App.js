@@ -96,7 +96,7 @@ function App() {
     } else {
       gridRef.current[r][c] = 0;
     }
-    console.log(gridRef.current[r][c], 'after')
+    console.log(grid[r][c], 'after')
   };
 
   // Animation Logic function, animation runs accordingly
