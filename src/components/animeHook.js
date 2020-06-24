@@ -1,8 +1,8 @@
-import React from 'react'
+import React, {useEffect, useRef} from 'react'
 
 export const useAnimationFrame = callback => {
  
-    const requestRef = React.useRef();
+    const requestRef = useRef();
     const previousTimeRef = React.useRef();
     
     const animate = time => {
@@ -10,11 +10,15 @@ export const useAnimationFrame = callback => {
           const deltaTime = time - previousTimeRef.current;
           callback(deltaTime)
       }
+      // Setimout to control speed
+      setTimeout(() => { 
       previousTimeRef.current = time;
-      requestRef.current = requestAnimationFrame(animate);
+        requestRef.current = requestAnimationFrame(animate);
+        
+      }, 2000 /5)
     }
     
-    React.useEffect(() => {
+    useEffect(() => {
       requestRef.current = requestAnimationFrame(animate);
       return () => cancelAnimationFrame(requestRef.current);
     }, []); // Make sure the effect runs only once

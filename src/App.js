@@ -13,7 +13,7 @@ function App() {
     const rows = [];
 
     for (let i = 0; i < rowsNum; i++) {
-    //Each element in our row array will be an array (a column array)
+      //Each element in our row array will be an array (a column array)
       rows[i] = [];
       // Creating a nested column array for each row element (25)
       for (let j = 0; j < colsNum; j++) {
@@ -34,6 +34,7 @@ function App() {
 
   // Start the game/animation state
   const [play, setPlay] = useState(false);
+  console.log(play, 'play when click?')
 
   // useRef hook: is a mutable object that persists a value across multiple re-renderings
   //it has a 'current' property which allows us to read, write and change its value (without re-rendering the component)
@@ -55,7 +56,7 @@ function App() {
     const rows = [];
 
     for (let i = 0; i < 25; i++) {
-    //Each element in our row array will be an array (a column array)
+      //Each element in our row array will be an array (a column array)
       rows[i] = [];
       // Creating a nested column array for each row element (25)
       for (let j = 0; j < 25; j++) {
@@ -63,10 +64,8 @@ function App() {
         rows[i][j] = 0;
       }
     }
-    setGrid(rows)
-    return grid
-   
- 
+    setGrid(rows);
+    return grid;
   }
 
   // Deals with edge cases: the cells on edge of grid that dont have some neighbours aka rows above row[0] and column[0] and after row 25 (index 24)
@@ -85,19 +84,29 @@ function App() {
   function togglePlayState(e) {
     e.preventDefault();
     setPlay(!play);
-    
   }
 
   const toggleCellState = (r, c) => (e) => {
     e.preventDefault();
     console.log(grid[r][c], 'before')
     if (grid[r][c] === 0) {
-      gridRef.current[r][c] = 1;
-    } else {
-      gridRef.current[r][c] = 0;
+       gridRef.current[r][c] = 1;
+      setGrid(gridRef.current)
+    } else if(grid[r][c] === 1) {
+       gridRef.current[r][c] = 0;
+      setGrid(gridRef.current)
     }
     console.log(grid[r][c], 'after')
+    return grid
   };
+
+
+
+  // console.log(gridRef.current, 'ref')
+  // console.log(grid, 'no ref')
+  // console.log(gridRef.current, 'ref2')
+  // console.log(grid, 'no ref2')
+  
 
   // Animation Logic function, animation runs accordingly
   // The logic which determines our animation: state of cell and neighbours state
@@ -110,6 +119,7 @@ function App() {
     }
 
     const newGrid = gridRef.current.map((r) => r.map((v) => v));
+    
 
     //row
     for (let i = 0; i < 25; i++) {
@@ -170,13 +180,13 @@ function App() {
           newGrid[i][j] = 1;
         }
       }
+      console.log(newGrid)
     }
 
     //Update state with draft state (changes to generation)
     setGrid(newGrid);
     gridRef.current = newGrid;
 
-    //animProgress(timestamp);
   };
 
   // We need to call our animation hook to run the animation
@@ -206,6 +216,7 @@ function App() {
         grid={grid}
         setGrid={setGrid}
       />
+      <h3> Generation: 1</h3>
       <Grid grid={grid} toggleCellState={toggleCellState} />
 
       <About />
