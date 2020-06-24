@@ -52,19 +52,22 @@ function App() {
 
   function clearGrid(e) {
     e.preventDefault();
-    let rows = [];
+    const rows = [];
+
     for (let i = 0; i < 25; i++) {
+    //Each element in our row array will be an array (a column array)
+      rows[i] = [];
       // Creating a nested column array for each row element (25)
-      // For each column array its getting the same length (25) and initialised withh 0's as we want our cells to be dead by default
       for (let j = 0; j < 25; j++) {
-        let nestedCols = [i][j];
-        console.log(nestedCols);
-        // Adding our nested column arrays to our rows array
-        rows.push(nestedCols);
+        //assign value to 0 by default as cell is dead to start with
+        rows[i][j] = 0;
       }
     }
-    setGrid(rows);
-    return grid;
+    setGrid(rows)
+    console.log(grid)
+    return grid
+   
+ 
   }
 
   // Deals with edge cases: the cells on edge of grid that dont have some neighbours aka rows above row[0] and column[0] and after row 25 (index 24)
@@ -85,8 +88,8 @@ function App() {
     setPlay(!play);
   }
 
-  const toggleCellState = (e) => (r, c) => {
-    e.preventDefault();
+  const toggleCellState =  (r, c) => {
+    // e.preventDefault();
     if (grid[r][c] === 0) {
       grid[r][c] = 1;
     } else {
