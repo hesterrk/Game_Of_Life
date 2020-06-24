@@ -3,7 +3,7 @@ import React from "react";
 function About() {
   return (
     <div style={{ display: 'flex', flexDirection: 'column' }}>
-      <div style={{ width: '50%', padding: '1rem', margin: 'auto', background: '#D7DDE8', marginTop: '20px'}}>
+      <div style={{ width: '50%', padding: '1rem', margin: 'auto', background: '#D7DDE8', marginTop: '20px', borderRadius: '4px'}}>
       <h3> The Rules of the Game: </h3>
       <ul>
         <li>
@@ -25,7 +25,7 @@ function About() {
         <p></p>
         </ul>
         </div>
-      <div style={{width: '50%', padding: '1rem', margin: 'auto', background: '#D7DDE8', marginTop: '20px'}}>
+      <div style={{width: '50%', padding: '1rem', margin: 'auto', background: '#D7DDE8', marginTop: '20px', borderRadius: '4px'}}>
       <h3> About the Algorithm: </h3>
       <p>
         The creator of this game, John Conway was an important mathematician
