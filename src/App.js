@@ -10,17 +10,15 @@ function App() {
 
   function createDataStructure(rowsNum, colsNum) {
     //Creating main row one-dimensional array which holds nested column arrays
-    //Each element in our row array will be an array (a column array)
     const rows = [];
 
-    // For each row element in our rows array, we need the same number of columns
     for (let i = 0; i < rowsNum; i++) {
+    //Each element in our row array will be an array (a column array)
+      rows[i] = [];
       // Creating a nested column array for each row element (25)
-      // For each column array its getting the same length (25) and initialised withh 0's as we want our cells to be dead by default
       for (let j = 0; j < colsNum; j++) {
-        let nestedCols = [i][j];
-        // Adding our nested column arrays to our rows array
-        rows.push(nestedCols);
+        //assign value to 0 by default as cell is dead to start with
+        rows[i][j] = 0;
       }
     }
     // Return the 2-dimensional array
@@ -87,14 +85,14 @@ function App() {
     setPlay(!play);
   }
 
-  function toggleCellState(r, c, e) {
+  const toggleCellState = (e) => (r, c) => {
     e.preventDefault();
     if (grid[r][c] === 0) {
       grid[r][c] = 1;
     } else {
       grid[r][c] = 0;
     }
-  }
+  };
 
   // Animation Logic function, animation runs accordingly
   // The logic which determines our animation: state of cell and neighbours state
@@ -178,7 +176,7 @@ function App() {
 
   // We need to call our animation hook to run the animation
 
-  useAnimationFrame(runGame)
+  useAnimationFrame(runGame);
 
   return (
     <div
