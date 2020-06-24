@@ -1,5 +1,4 @@
 import React, { useEffect, useState, useRef } from "react";
-import { useAnimationFrame } from './animeHook'
 
 function Controls({ play, clearGrid }) {
   // Start the game state

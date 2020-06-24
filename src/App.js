@@ -1,8 +1,11 @@
 import React, { useState, useRef } from "react";
 import "./App.css";
 import Grid from "./components/Grid";
-// import Controls from "./components/Controls";
+import Controls from "./components/Controls";
 import About from "./components/About";
+import { useAnimationFrame } from './components/animeHook'
+
+
 
 function App() {
   // Creating data structure: an row array with nested column arrays
@@ -32,7 +35,7 @@ function App() {
 
   //Grid state
   const [grid, setGrid] = useState(twoDGrid);
-  console.log(grid)
+  console.log(grid);
 
   // Start the game/animation state
   const [play, setPlay] = useState(false);
@@ -64,22 +67,21 @@ function App() {
         rows.push(nestedCols);
       }
     }
-    setGrid(rows)
-    return grid
+    setGrid(rows);
+    return grid;
   }
 
+  // Deals with edge cases: the cells on edge of grid that dont have some neighbours aka rows above row[0] and column[0] and after row 25 (index 24)
+  function getGSquare(i, j) {
+    if (i < 0 || j < 0) {
+      return null;
+    }
+    if (i > 24 || j > 24) {
+      return null;
+    }
 
-// Deals with edge cases: the cells on edge of grid that dont have some neighbours aka rows above row[0] and column[0] and after row 25 (index 24)
-function getGSquare(i, j) {
-  if (i < 0 || j < 0) {
-    return null;
+    return gridRef.current[i][j];
   }
-  if (i > 24 || j > 24) {
-    return null;
-  }
-
-  return gridRef.current[i][j];
-} 
 
 
 
@@ -111,7 +113,7 @@ function getGSquare(i, j) {
         play={play}
         clearGrid={clearGrid}
       /> */}
-      <Grid grid={grid}/>
+      <Grid grid={grid} />
 
       <About />
     </div>
