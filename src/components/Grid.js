@@ -1,7 +1,7 @@
 import React from "react";
 import Cell from "./Cell";
 
-function Grid({ grid, toggle }) {
+function Grid({ grid, toggleCellState }) {
   return (
     <div style={{ display: "flex", justifyContent: "center" }}>
       <div style={{ display: "grid", gridTemplateColumns: `repeat(25, 22px)` }}>
@@ -12,7 +12,7 @@ function Grid({ grid, toggle }) {
               key={`${r_i}+${col_i}`}
               r={r_i}
               c={col_i}
-              toggle={toggle}
+              toggleCellState={toggleCellState}
               cellpos={grid[r_i][col_i]}
             />
         ))

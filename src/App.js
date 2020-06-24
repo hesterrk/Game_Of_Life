@@ -82,16 +82,22 @@ function App() {
     return gridRef.current[i][j];
   }
 
-  // Toggle Play state for controls component 
-
+  // Toggle Play state for controls component
   function togglePlayState(e) {
-    e.preventDefault()
-    setPlay(!play)
-
+    e.preventDefault();
+    setPlay(!play);
   }
 
+  function toggleCellState(r, c, e) {
+    e.preventDefault();
+    if (grid[r][c] === 0) {
+      grid[r][c] = 1;
+    } else {
+      grid[r][c] = 0;
+    }
+  }
 
-  // Animation Logic function, animation runs accordingly 
+  // Animation Logic function, animation runs accordingly
   // The logic which determines our animation: state of cell and neighbours state
   //  Iterating over our grid: for each cell we check neighbours state
   //  This function will produce a new grid each generation
@@ -100,9 +106,9 @@ function App() {
     if (playingRef.current === false) {
       return false;
     }
-    
-    const newGrid = gridRef.current.map(r => r.map(v => v))
-    
+
+    const newGrid = gridRef.current.map((r) => r.map((v) => v));
+
     //row
     for (let i = 0; i < 25; i++) {
       //column
@@ -147,8 +153,11 @@ function App() {
 
         // Applying the game rules here
         // 1. live cell has less than 2 neighbours it dies(underpop) 2. or more than 3 it dies (overpop)
-        
-        if (gridRef.current[i][j] === 1 && (cellNeighbours < 2 || cellNeighbours > 3)) {
+
+        if (
+          gridRef.current[i][j] === 1 &&
+          (cellNeighbours < 2 || cellNeighbours > 3)
+        ) {
           // Want to kill our current cell (whatever position that cell is at)
           //We kill it by assinging it back to 0
           newGrid[i][j] = 0;
@@ -163,25 +172,12 @@ function App() {
 
     //Update state with draft state (changes to generation)
     setGrid(newGrid);
-    gridRef.current = newGrid
-    
-    //animProgress(timestamp);
-  
+    gridRef.current = newGrid;
 
-    
+    //animProgress(timestamp);
   };
 
-  // We need to call our animation hook to run the animation 
-
-
-
-
-
-
-
-
-
-
+  // We need to call our animation hook to run the animation
 
   return (
     <div
@@ -205,7 +201,7 @@ function App() {
         clearGrid={clearGrid}
         togglePlayState={togglePlayState}
       />
-      <Grid grid={grid} />
+      <Grid grid={grid} toggleCellState={toggleCellState} />
 
       <About />
     </div>
