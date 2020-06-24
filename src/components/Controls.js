@@ -1,6 +1,6 @@
 import React from "react";
 
-function Controls({ play, clearGrid, togglePlayState }) {
+function Controls({ play, clearGrid, togglePlayState, grid, setGrid }) {
   // // Start the game state
   // const [play, setPlay] = useState(false);
 

@@ -202,6 +202,8 @@ function App() {
         play={play}
         clearGrid={clearGrid}
         togglePlayState={togglePlayState}
+        grid={grid}
+        setGrid={setGrid}
       />
       <Grid grid={grid} toggleCellState={toggleCellState} />
 
