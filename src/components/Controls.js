@@ -1,9 +1,8 @@
-import React, { useEffect, useState, useRef } from "react";
+import React from "react";
 
-function Controls({ play, clearGrid }) {
+function Controls({ play, clearGrid, togglePlayState }) {
   // // Start the game state
   // const [play, setPlay] = useState(false);
-
 
   // const startingRef = useRef(play);
   // //Assign the current value of play state to current property of the hook
@@ -33,9 +32,9 @@ function Controls({ play, clearGrid }) {
   //   //  This function will produce a new grid each generation
   //   // https://css-tricks.com/using-requestanimationframe-with-react-hooks/
   //   //const newGenGrid = produce(grid, (draftGState) => {
-    
+
   //   const newGrid = gridRef.current.map(r => r.map(v => v))
-    
+
   //   //row
   //   for (let i = 0; i < 25; i++) {
   //     //column
@@ -80,7 +79,7 @@ function Controls({ play, clearGrid }) {
 
   //       // Applying the game rules here
   //       // 1. live cell has less than 2 neighbours it dies(underpop) 2. or more than 3 it dies (overpop)
-        
+
   //       if (gridRef.current[i][j] === 1 && (cellNeighbours < 2 || cellNeighbours > 3)) {
   //         // Want to kill our current cell (whatever position that cell is at)
   //         //We kill it by assinging it back to 0
@@ -112,10 +111,6 @@ function Controls({ play, clearGrid }) {
   /*useEffect(() => {
     return () => cancelAnimationFrame(startingRef.current);
   }, [play]);*/
-
-
-  
-  useAnimationFrame(runGame)
 
   // // For Clear button: creating an empty grid
   // function clearGrid() {
@@ -161,20 +156,17 @@ function Controls({ play, clearGrid }) {
   return (
     <div>
       <button
-        onClick={(e) => {
-          e.preventDefault();
-          setPlay((play) => !play);
-          // setPlay(!play);
+        onClick={
+          togglePlayState
           // if (!play) {
           //     startingRef.current = true;
-          //     requestAnimationFrame(runGame);
           // }
-        }}
+        }
       >
         {play ? "stop" : "play"}
       </button>
       {/* // Reset state to empty grid */}
-      <button onClick={() => clearGrid()}>Clear</button>
+      <button onClick={clearGrid}>Clear</button>
 
       {/* Create premade living and dead cells (sample cell configurations the user can load and run)  */}
       <button onClick={() => randomPresetOne()}>Preset 1</button>
@@ -185,4 +177,3 @@ function Controls({ play, clearGrid }) {
 }
 
 export default Controls;
-

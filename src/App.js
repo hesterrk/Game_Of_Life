@@ -82,6 +82,14 @@ function App() {
     return gridRef.current[i][j];
   }
 
+  // Toggle Play state for controls component 
+
+  function togglePlayState(e) {
+    e.preventDefault()
+    setPlay(!play)
+
+  }
+
 
   // Animation Logic function, animation runs accordingly 
   // The logic which determines our animation: state of cell and neighbours state
@@ -192,10 +200,11 @@ function App() {
     >
       <h1> Welcome To Conway's Game Of Life </h1>
 
-      {/* <Controls
+      <Controls
         play={play}
         clearGrid={clearGrid}
-      /> */}
+        togglePlayState={togglePlayState}
+      />
       <Grid grid={grid} />
 
       <About />
