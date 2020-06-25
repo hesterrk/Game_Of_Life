@@ -35,7 +35,6 @@ function App() {
 
   // Start the game/animation state
   const [play, setPlay] = useState(false);
-  console.log(play, "play when click?");
 
   // useRef hook: is a mutable object that persists a value across multiple re-renderings
   //it has a 'current' property which allows us to read, write and change its value (without re-rendering the component)
@@ -52,9 +51,20 @@ function App() {
   // Generation state --> changes with animation, need to increment it each time animation runs
   const [gen, setGen] = useState(0);
 
-  // For Clear button: creating an empty grid
-  // Pass this down
+  // Make cells random color state
+  const [changeColour, setChangeColour] = useState(false);
 
+  //Random cell colour generator
+  function getRandomColor() {
+    var letters = "0123456789ABCDEF";
+    var color = "#";
+    for (var i = 0; i < 6; i++) {
+      color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+  }
+
+  // Clear button: creating an empty grid
   function clearGrid(e) {
     e.preventDefault();
     const rows = [];
@@ -95,7 +105,7 @@ function App() {
     e.preventDefault();
 
     const newGrid = produce(grid, (draftGrid) => {
-      draftGrid[r][c] = grid[r][c] === 0 ? 1 : 0
+      draftGrid[r][c] = grid[r][c] === 0 ? 1 : 0;
     });
 
     setGrid(newGrid);
@@ -113,7 +123,7 @@ function App() {
   // The logic which determines our animation: state of cell and neighbours state
   //  Iterating over our grid: for each cell we check neighbours state
   //  This function will produce a new grid each generation
-  const runGame = (timestamp) => {
+  const runGame = () => {
     //This function doesn't run if the start button hasnt been clicked
     if (playingRef.current === false) {
       return false;
@@ -224,9 +234,17 @@ function App() {
         togglePlayState={togglePlayState}
         grid={grid}
         setGrid={setGrid}
+        changeColour={changeColour}
+        setChangeColour={setChangeColour}
       />
+
       <h3> Generation: {gen}</h3>
-      <Grid grid={grid} toggleCellState={toggleCellState} />
+      <Grid
+        grid={grid}
+        toggleCellState={toggleCellState}
+        changeColour={changeColour}
+        getRandomColor={getRandomColor}
+      />
 
       <About />
     </div>

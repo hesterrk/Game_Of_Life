@@ -1,6 +1,6 @@
 import React from "react";
 
-function Controls({ play, clearGrid, togglePlayState, grid, setGrid }) {
+function Controls({ play, clearGrid, togglePlayState, grid, setGrid, changeColour, setChangeColour }) {
   
   function randomPresetOne() {
     const rows = [];
@@ -40,7 +40,15 @@ function Controls({ play, clearGrid, togglePlayState, grid, setGrid }) {
       <button onClick={() => randomPresetOne()}>Preset 1</button>
 
       <button onClick={() => randomPresetTwo()}>Preset 2</button>
-      {/* <button> The Glider Scenario </button> */}
+      <label>
+        <input
+          type="checkbox"
+          value={changeColour}
+          onChange={() => setChangeColour(!changeColour)}
+        />
+        Colour Me!
+      </label>
+  
     </div>
   );
 }

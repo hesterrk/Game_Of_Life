@@ -1,7 +1,7 @@
 import React from "react";
 import Cell from "./Cell";
 
-function Grid({ grid, toggleCellState }) {
+function Grid({ grid, toggleCellState, changeColour, getRandomColor }) {
   return (
     <div style={{ display: "flex", justifyContent: "center" }}>
       <div style={{ display: "grid", gridTemplateColumns: `repeat(25, 22px)` }}>
@@ -14,6 +14,8 @@ function Grid({ grid, toggleCellState }) {
               c={col_i}
               toggleCellState={toggleCellState}
               cellState={grid[r_i][col_i]}
+              changeColour={changeColour}
+              getRandomColor={getRandomColor}
             />
           ))
         )}
