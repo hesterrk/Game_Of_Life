@@ -217,11 +217,12 @@ function App() {
       style={{
         width: "auto",
         height: "auto",
-        animation: "stretch",
-        animationDuration: "2s",
-        animationTimingFunction: "ease-out",
-        animationDirection: "alternate",
-        animationDelay: "0s",
+        border: '1px solid black',
+        // animation: "stretch",
+        // animationDuration: "2s",
+        // animationTimingFunction: "ease-out",
+        // animationDirection: "alternate",
+        // animationDelay: "0s",
         backgroundColor: "#2C5364",
       }}
     >
