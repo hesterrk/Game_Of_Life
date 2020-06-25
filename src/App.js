@@ -7,6 +7,20 @@ import { useAnimationFrame } from "./components/animeHook";
 import produce from "immer";
 
 function App() {
+
+  // Size state
+  const [gridSize, setGridSize] = useState(25)
+
+  function onChangeSize(e) {
+    e.preventDefault()
+    console.log(e.target.value, 'grid size in onchange')
+    const newSize = setGridSize(e.target.value)
+    gridRef.current = newSize
+    return newSize
+  }
+
+
+
   // Creating data structure: an row array with nested column arrays
   function createDataStructure(rowsNum, colsNum) {
     //Creating main row one-dimensional array which holds nested column arrays
@@ -26,7 +40,10 @@ function App() {
   }
 
   // 25 x 25 dimension
-  const twoDGrid = createDataStructure(25, 25);
+  // const twoDGrid = createDataStructure(25, 25);
+// Change --> trialling
+  const twoDGrid = createDataStructure(gridSize, gridSize);
+  console.log(gridSize)
 
   //Grid state
   const [grid, setGrid] = useState(twoDGrid);
@@ -83,10 +100,11 @@ function App() {
 
   // Deals with edge cases: the cells on edge of grid that dont have some neighbours aka rows above row[0] and column[0] and after row 25 (index 24)
   function getGSquare(i, j) {
+    // console.log(gridSize)
     if (i < 0 || j < 0) {
       return null;
     }
-    if (i > 24 || j > 24) {
+    if (i > gridSize-1 || j > gridSize-1) {
       return null;
     }
 
@@ -134,9 +152,9 @@ function App() {
     let genChange = false;
 
     //row
-    for (let i = 0; i < 25; i++) {
+    for (let i = 0; i < gridSize; i++) {
       //column
-      for (let j = 0; j < 25; j++) {
+      for (let j = 0; j < gridSize; j++) {
         //Cell neighbours: N, W, E, S, NW, NE, SE, SW --> (top, bottom, left, right and all diagnols)
 
         // By default the cell has 0 neighbours
@@ -235,12 +253,16 @@ function App() {
 
       <h3> Generation: {gen}</h3>
 
-      {/* // SIZE */}
+      {/* Changing size of grid*/}
       <div>
-        <option></option>
+        <select onChange={onChangeSize} value={gridSize.value}>
+        <option value="25"> 25 </option>
+          <option value="50"> 50 </option>
+          </select>
       </div>
 
       <Grid
+        gridSize={gridSize}
         grid={grid}
         toggleCellState={toggleCellState}
         changeColour={changeColour}
