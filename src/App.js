@@ -215,7 +215,6 @@ function App() {
     <div
       className="App"
       style={{
-        border: "2px solid green",
         width: "auto",
         height: "auto",
         animation: "stretch",
