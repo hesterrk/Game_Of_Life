@@ -37,9 +37,9 @@ function Controls({ play, clearGrid, togglePlayState, grid, setGrid, changeColou
       <button onClick={clearGrid}>Clear</button>
 
       {/* Create premade living and dead cells (sample cell configurations the user can load and run)  */}
-      <button onClick={() => randomPresetOne()}>Preset 1</button>
+      <button onClick={() => randomPresetOne()}>Random 1</button>
 
-      <button onClick={() => randomPresetTwo()}>Preset 2</button>
+      <button onClick={() => randomPresetTwo()}>Random 2</button>
       <label>
         <input
           type="checkbox"
