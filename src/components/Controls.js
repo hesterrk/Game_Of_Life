@@ -1,7 +1,15 @@
 import React from "react";
 
-function Controls({ play, clearGrid, togglePlayState, grid, setGrid, changeColour, setChangeColour }) {
-  
+function Controls({
+  play,
+  clearGrid,
+  togglePlayState,
+  grid,
+  setGrid,
+  changeColour,
+  setChangeColour,
+  beaconOsc,
+}) {
   function randomPresetOne() {
     const rows = [];
     for (let i = 0; i < 25; i++) {
@@ -26,6 +34,7 @@ function Controls({ play, clearGrid, togglePlayState, grid, setGrid, changeColou
       });
       rows.push(nestedCols);
     }
+
     setGrid(rows);
     return grid;
   }
@@ -40,6 +49,8 @@ function Controls({ play, clearGrid, togglePlayState, grid, setGrid, changeColou
       <button onClick={() => randomPresetOne()}>Random 1</button>
 
       <button onClick={() => randomPresetTwo()}>Random 2</button>
+
+      <button onClick={beaconOsc}> Beacon! </button>
       <label>
         <input
           type="checkbox"
@@ -48,7 +59,6 @@ function Controls({ play, clearGrid, togglePlayState, grid, setGrid, changeColou
         />
         Colour Me!
       </label>
-  
     </div>
   );
 }

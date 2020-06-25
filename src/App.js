@@ -9,19 +9,9 @@ import produce from "immer";
 function App() {
   // Size state
   const [gridSize] = useState(25);
-  // const sizeRef = useRef(gridSize);
-  // sizeRef.current = gridSize;
 
-  // function onChangeSize(e) {
-  //   e.preventDefault();
-  //   setGridSize((oldSize) => {
-  //     // let newSize = JSON.parse(JSON.stringify(oldSize));
-  //     let newSize = oldSize === 25 ? 10 : 25;
-  //     console.log(newSize, "new size");
-  //     sizeRef.current = newSize;
-  //     return newSize;
-  //   });
-  // }
+  //Toggle size, 25 is default size
+  // const [isDefaultSize, setIsDefaultSize] = useState(true);
 
   // Creating data structure: an row array with nested column arrays
   function createDataStructure(rowsNum, colsNum) {
@@ -80,6 +70,16 @@ function App() {
     return color;
   }
 
+  // Size func
+  // function onChangeSize() {
+  //   if (isDefaultSize === true) {
+  //     return setGridSize(25)
+  //   }
+  //   if (isDefaultSize === false) {
+  //     return setGridSize(15);
+  //   }
+  // }
+
   // Clear button: creating an empty grid
   function clearGrid(e) {
     e.preventDefault();
@@ -135,6 +135,38 @@ function App() {
     //   return newGrid
     // })
   };
+
+  // PRESET
+
+  function beaconOsc() {
+    const rows = [];
+    for (let i = 0; i < 25; i++) {
+      //initialise the values with random 0's and 1's
+      //Math.random() function returns a float/random number in the range 0 to less than 1
+      const nestedCols = Array.from(new Array(25), () => {
+        return 0;
+      });
+      if (i == 0) {
+        nestedCols[0] = 1;
+        nestedCols[1] = 1;
+      }
+      if (i == 1) {
+        nestedCols[0] = 1;
+        nestedCols[1] = 1;
+      }
+      if (i == 2) {
+        nestedCols[2] = 1;
+        nestedCols[3] = 1;
+      }
+      if (i == 3) {
+        nestedCols[2] = 1;
+        nestedCols[3] = 1;
+      }
+      rows.push(nestedCols);
+    }
+    setGrid(rows);
+    return grid;
+  }
 
   // Animation Logic function, animation runs accordingly
   // The logic which determines our animation: state of cell and neighbours state
@@ -248,16 +280,16 @@ function App() {
         setGrid={setGrid}
         changeColour={changeColour}
         setChangeColour={setChangeColour}
+        beaconOsc={beaconOsc}
       />
 
       <h3> Generation: {gen}</h3>
 
-      {/* <div>
-        <select onChange={onChangeSize} value={gridSize.value}>
-          <option value="25"> Default- 25x25 </option>
-          <option value="10"> 10 </option>
-        </select>
-      </div> */}
+      {/* <button
+        onClick={() => onChangeSize(setIsDefaultSize(!isDefaultSize))}>
+     
+        Toggle Size
+      </button> */}
 
       <Grid
         gridSize={gridSize}
