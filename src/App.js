@@ -48,6 +48,11 @@ function App() {
   //Assign the current value of play state to current property of the hook
   playingRef.current = play;
 
+  // Generation state --> changes with animation, need to increment it each time animation runs
+  const [gen, setGen] = useState(0)
+
+
+
   // For Clear button: creating an empty grid
   // Pass this down
 
@@ -65,6 +70,7 @@ function App() {
       }
     }
     setGrid(rows);
+    setGen(0)
     return grid;
   }
 
@@ -119,7 +125,8 @@ function App() {
     }
 
     const newGrid = gridRef.current.map((r) => r.map((v) => v));
-    
+    // Change in generation
+    let genChange = false
 
     //row
     for (let i = 0; i < 25; i++) {
@@ -173,16 +180,26 @@ function App() {
           // Want to kill our current cell (whatever position that cell is at)
           //We kill it by assinging it back to 0
           newGrid[i][j] = 0;
+          genChange = true
         }
         //if the cell is dead, and has exactly 3 neighbors, its alive = 1
         if (gridRef.current[i][j] === 0 && cellNeighbours === 3) {
           // Want to change its state to bring it alive
           newGrid[i][j] = 1;
+          genChange = true
         }
       }
       console.log(newGrid)
     }
 
+    // Each animation frame updates generation if changes to generation
+    // refresh 
+    if (genChange) {
+      setGen(prevGen => (prevGen +=1))
+      
+    }
+
+    
     //Update state with draft state (changes to generation)
     setGrid(newGrid);
     gridRef.current = newGrid;
@@ -215,8 +232,9 @@ function App() {
         togglePlayState={togglePlayState}
         grid={grid}
         setGrid={setGrid}
+     
       />
-      <h3> Generation: 1</h3>
+      <h3> Generation: {gen}</h3>
       <Grid grid={grid} toggleCellState={toggleCellState} />
 
       <About />

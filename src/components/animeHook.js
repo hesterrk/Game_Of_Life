@@ -10,7 +10,7 @@ export const useAnimationFrame = callback => {
           const deltaTime = time - previousTimeRef.current;
           callback(deltaTime)
       }
-      // Setimout to control speed
+      // Setimout to control speed of animation frames
       setTimeout(() => { 
       previousTimeRef.current = time;
         requestRef.current = requestAnimationFrame(animate);
