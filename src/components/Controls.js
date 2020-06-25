@@ -32,7 +32,7 @@ function Controls({ play, clearGrid, togglePlayState, grid, setGrid, changeColou
 
   return (
     <div>
-      <button onClick={togglePlayState}>{play ? "stop" : "play"}</button>
+      <button onClick={togglePlayState}>{play ? "Stop" : "Play"}</button>
       {/* // Reset state to empty grid */}
       <button onClick={clearGrid}>Clear</button>
 
