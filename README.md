@@ -10,8 +10,11 @@ User's can create their own scenario by clicking on any cell, they can also see 
 
 # Features
 
--Cell Automata aniamation- user input and random
+-Cell Automata aniamation- user input and random cell configurations that users can run
 -Cell colour change (by user choice)
+-Buttons that start, stop and clear the animation
+-Text outlining the rules to Conway's "Game of Life" and brief outline of game
+
 
 # Links
 
