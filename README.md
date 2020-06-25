@@ -5,12 +5,17 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 # About 
 
 This purpose of this app is for a user to be able to run different "Game of Life" scenarios. 
+User's can create their own scenario by clicking on any cell, they can also see random configurations. 
 
 
 # Features
 
+-Cell Automata aniamation- user input and random
+-Cell colour change (by user choice)
 
 # Links
+
+-Wikepedia page: https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life
 
 # NPM scripts
 
@@ -20,6 +25,15 @@ This purpose of this app is for a user to be able to run different "Game of Life
 2) npm install --> essential dependencies
 3) npm run server --> start your local server
 
-# Technologies Used and Styling Libraries 
+# Technologies Used  
  
  -React
+ -Immer 
+ -Javascript
+ -CSS
+
+
+ # WishList
+
+ -Allowed user to change the speed of the animation
+ -Try animation in 3D

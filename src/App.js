@@ -8,7 +8,7 @@ import produce from "immer";
 
 function App() {
   // Size state
-  const [gridSize, setGridSize] = useState(25);
+  const [gridSize] = useState(25);
   // const sizeRef = useRef(gridSize);
   // sizeRef.current = gridSize;
 
