@@ -7,19 +7,21 @@ import { useAnimationFrame } from "./components/animeHook";
 import produce from "immer";
 
 function App() {
-
   // Size state
-  const [gridSize, setGridSize] = useState(25)
+  const [gridSize, setGridSize] = useState(25);
+  // const sizeRef = useRef(gridSize);
+  // sizeRef.current = gridSize;
 
-  function onChangeSize(e) {
-    e.preventDefault()
-    console.log(e.target.value, 'grid size in onchange')
-    const newSize = setGridSize(e.target.value)
-    gridRef.current = newSize
-    return newSize
-  }
-
-
+  // function onChangeSize(e) {
+  //   e.preventDefault();
+  //   setGridSize((oldSize) => {
+  //     // let newSize = JSON.parse(JSON.stringify(oldSize));
+  //     let newSize = oldSize === 25 ? 10 : 25;
+  //     console.log(newSize, "new size");
+  //     sizeRef.current = newSize;
+  //     return newSize;
+  //   });
+  // }
 
   // Creating data structure: an row array with nested column arrays
   function createDataStructure(rowsNum, colsNum) {
@@ -41,9 +43,8 @@ function App() {
 
   // 25 x 25 dimension
   // const twoDGrid = createDataStructure(25, 25);
-// Change --> trialling
+  // Change --> trialling
   const twoDGrid = createDataStructure(gridSize, gridSize);
-  console.log(gridSize)
 
   //Grid state
   const [grid, setGrid] = useState(twoDGrid);
@@ -84,11 +85,11 @@ function App() {
     e.preventDefault();
     const rows = [];
 
-    for (let i = 0; i < 25; i++) {
+    for (let i = 0; i < gridSize; i++) {
       //Each element in our row array will be an array (a column array)
       rows[i] = [];
       // Creating a nested column array for each row element (25)
-      for (let j = 0; j < 25; j++) {
+      for (let j = 0; j < gridSize; j++) {
         //assign value to 0 by default as cell is dead to start with
         rows[i][j] = 0;
       }
@@ -100,14 +101,12 @@ function App() {
 
   // Deals with edge cases: the cells on edge of grid that dont have some neighbours aka rows above row[0] and column[0] and after row 25 (index 24)
   function getGSquare(i, j) {
-    // console.log(gridSize)
     if (i < 0 || j < 0) {
       return null;
     }
-    if (i > gridSize-1 || j > gridSize-1) {
+    if (i > gridSize - 1 || j > gridSize - 1) {
       return null;
     }
-
     return gridRef.current[i][j];
   }
 
@@ -253,13 +252,12 @@ function App() {
 
       <h3> Generation: {gen}</h3>
 
-      {/* Changing size of grid*/}
-      <div>
+      {/* <div>
         <select onChange={onChangeSize} value={gridSize.value}>
-        <option value="25"> 25 </option>
-          <option value="50"> 50 </option>
-          </select>
-      </div>
+          <option value="25"> Default- 25x25 </option>
+          <option value="10"> 10 </option>
+        </select>
+      </div> */}
 
       <Grid
         gridSize={gridSize}
