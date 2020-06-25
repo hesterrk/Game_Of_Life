@@ -40,7 +40,7 @@ function Controls({ play, clearGrid, togglePlayState, grid, setGrid }) {
       <button onClick={() => randomPresetOne()}>Preset 1</button>
 
       <button onClick={() => randomPresetTwo()}>Preset 2</button>
-      <button> The Glider Scenario </button>
+      {/* <button> The Glider Scenario </button> */}
     </div>
   );
 }

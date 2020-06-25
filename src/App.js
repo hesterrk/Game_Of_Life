@@ -4,6 +4,7 @@ import Grid from "./components/Grid";
 import Controls from "./components/Controls";
 import About from "./components/About";
 import { useAnimationFrame } from "./components/animeHook";
+import produce from "immer";
 
 function App() {
   // Creating data structure: an row array with nested column arrays
@@ -34,7 +35,7 @@ function App() {
 
   // Start the game/animation state
   const [play, setPlay] = useState(false);
-  console.log(play, 'play when click?')
+  console.log(play, "play when click?");
 
   // useRef hook: is a mutable object that persists a value across multiple re-renderings
   //it has a 'current' property which allows us to read, write and change its value (without re-rendering the component)
@@ -49,9 +50,7 @@ function App() {
   playingRef.current = play;
 
   // Generation state --> changes with animation, need to increment it each time animation runs
-  const [gen, setGen] = useState(0)
-
-
+  const [gen, setGen] = useState(0);
 
   // For Clear button: creating an empty grid
   // Pass this down
@@ -70,7 +69,7 @@ function App() {
       }
     }
     setGrid(rows);
-    setGen(0)
+    setGen(0);
     return grid;
   }
 
@@ -94,25 +93,21 @@ function App() {
 
   const toggleCellState = (r, c) => (e) => {
     e.preventDefault();
-    console.log(grid[r][c], 'before')
-    if (grid[r][c] === 0) {
-       gridRef.current[r][c] = 1;
-      setGrid(gridRef.current)
-    } else if(grid[r][c] === 1) {
-       gridRef.current[r][c] = 0;
-      setGrid(gridRef.current)
-    }
-    console.log(grid[r][c], 'after')
-    return grid
+
+    const newGrid = produce(grid, (draftGrid) => {
+      draftGrid[r][c] = grid[r][c] === 0 ? 1 : 0
+    });
+
+    setGrid(newGrid);
+    return grid;
+
+    // setGrid(oldGrid => {
+    //   const newGrid = JSON.parse(JSON.stringify(oldGrid));
+    //   newGrid[r][c] = (newGrid[r][c] === 1 ? 0 : 1);
+    //   gridRef.current = newGrid;
+    //   return newGrid
+    // })
   };
-
-
-
-  // console.log(gridRef.current, 'ref')
-  // console.log(grid, 'no ref')
-  // console.log(gridRef.current, 'ref2')
-  // console.log(grid, 'no ref2')
-  
 
   // Animation Logic function, animation runs accordingly
   // The logic which determines our animation: state of cell and neighbours state
@@ -126,7 +121,7 @@ function App() {
 
     const newGrid = gridRef.current.map((r) => r.map((v) => v));
     // Change in generation
-    let genChange = false
+    let genChange = false;
 
     //row
     for (let i = 0; i < 25; i++) {
@@ -180,33 +175,30 @@ function App() {
           // Want to kill our current cell (whatever position that cell is at)
           //We kill it by assinging it back to 0
           newGrid[i][j] = 0;
-          genChange = true
+          genChange = true;
         }
         //if the cell is dead, and has exactly 3 neighbors, its alive = 1
         if (gridRef.current[i][j] === 0 && cellNeighbours === 3) {
           // Want to change its state to bring it alive
           newGrid[i][j] = 1;
-          genChange = true
+          genChange = true;
         }
       }
-      console.log(newGrid)
+      // console.log(newGrid)
     }
 
     // Each animation frame updates generation if changes to generation
-    // refresh 
+    // refresh
     if (genChange) {
-      setGen(prevGen => (prevGen +=1))
-      
+      setGen((prevGen) => (prevGen += 1));
     }
 
-    
     //Update state with draft state (changes to generation)
     setGrid(newGrid);
     gridRef.current = newGrid;
-
   };
 
-  // We need to call our animation hook to run the animation
+  // Calling animation hook with runGame as cb to run the animation
   useAnimationFrame(runGame);
 
   return (
@@ -232,7 +224,6 @@ function App() {
         togglePlayState={togglePlayState}
         grid={grid}
         setGrid={setGrid}
-     
       />
       <h3> Generation: {gen}</h3>
       <Grid grid={grid} toggleCellState={toggleCellState} />
