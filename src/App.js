@@ -8,7 +8,6 @@ import produce from "immer";
 
 function App() {
   // Creating data structure: an row array with nested column arrays
-
   function createDataStructure(rowsNum, colsNum) {
     //Creating main row one-dimensional array which holds nested column arrays
     const rows = [];
@@ -31,7 +30,6 @@ function App() {
 
   //Grid state
   const [grid, setGrid] = useState(twoDGrid);
-  // console.log(grid);
 
   // Start the game/animation state
   const [play, setPlay] = useState(false);
@@ -104,11 +102,13 @@ function App() {
   const toggleCellState = (r, c) => (e) => {
     e.preventDefault();
 
-    const newGrid = produce(grid, (draftGrid) => {
-      draftGrid[r][c] = grid[r][c] === 0 ? 1 : 0;
-    });
+    if (!play) {
+      const newGrid = produce(grid, (draftGrid) => {
+        draftGrid[r][c] = grid[r][c] === 0 ? 1 : 0;
+      });
 
-    setGrid(newGrid);
+      setGrid(newGrid);
+    }
     return grid;
 
     // setGrid(oldGrid => {
@@ -217,12 +217,7 @@ function App() {
       style={{
         width: "auto",
         height: "auto",
-        border: '1px solid black',
-        // animation: "stretch",
-        // animationDuration: "2s",
-        // animationTimingFunction: "ease-out",
-        // animationDirection: "alternate",
-        // animationDelay: "0s",
+        border: "1px solid black",
         backgroundColor: "#2C5364",
       }}
     >
@@ -239,6 +234,12 @@ function App() {
       />
 
       <h3> Generation: {gen}</h3>
+
+      {/* // SIZE */}
+      <div>
+        <option></option>
+      </div>
+
       <Grid
         grid={grid}
         toggleCellState={toggleCellState}
