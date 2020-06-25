@@ -216,8 +216,8 @@ function App() {
       className="App"
       style={{
         border: "2px solid green",
-        width: "100vw",
-        height: "100vh",
+        width: "auto",
+        height: "auto",
         animation: "stretch",
         animationDuration: "2s",
         animationTimingFunction: "ease-out",
