@@ -136,32 +136,57 @@ function App() {
     // })
   };
 
-  // PRESET
+  // Preset 1: beacon
 
-  function beaconOsc() {
+  function beacon() {
     const rows = [];
     for (let i = 0; i < 25; i++) {
-      //initialise the values with random 0's and 1's
-      //Math.random() function returns a float/random number in the range 0 to less than 1
       const nestedCols = Array.from(new Array(25), () => {
         return 0;
       });
-      if (i == 0) {
+      if (i === 0) {
         nestedCols[0] = 1;
         nestedCols[1] = 1;
       }
-      if (i == 1) {
+      if (i === 1) {
         nestedCols[0] = 1;
         nestedCols[1] = 1;
       }
-      if (i == 2) {
+      if (i === 2) {
         nestedCols[2] = 1;
         nestedCols[3] = 1;
       }
-      if (i == 3) {
+      if (i === 3) {
         nestedCols[2] = 1;
         nestedCols[3] = 1;
       }
+      rows.push(nestedCols);
+    }
+    setGrid(rows);
+    return grid;
+  }
+
+  // Preset 2: Glider
+
+  function glider() {
+    const rows = [];
+    for (let i = 0; i < 25; i++) {
+      const nestedCols = Array.from(new Array(25), () => {
+        return 0;
+      });
+      if (i === 2) {
+        nestedCols[2] = 1;
+      }
+
+      if (i === 3) {
+        nestedCols[0] = 1;
+        nestedCols[2] = 1;
+      }
+      if (i === 4) {
+        nestedCols[1] = 1;
+        nestedCols[2] = 1;
+      }
+
       rows.push(nestedCols);
     }
     setGrid(rows);
@@ -280,7 +305,8 @@ function App() {
         setGrid={setGrid}
         changeColour={changeColour}
         setChangeColour={setChangeColour}
-        beaconOsc={beaconOsc}
+        beacon={beacon}
+        glider={glider}
       />
 
       <h3> Generation: {gen}</h3>

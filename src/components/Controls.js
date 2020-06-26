@@ -8,7 +8,8 @@ function Controls({
   setGrid,
   changeColour,
   setChangeColour,
-  beaconOsc,
+  beacon,
+  glider
 }) {
   function randomPresetOne() {
     const rows = [];
@@ -50,7 +51,8 @@ function Controls({
 
       <button onClick={() => randomPresetTwo()}>Random 2</button>
 
-      <button onClick={beaconOsc}> Beacon! </button>
+      <button onClick={beacon}> Beacon Preset </button>
+      <button onClick={glider}> Glider Preset</button>
       <label>
         <input
           type="checkbox"
