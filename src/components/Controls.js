@@ -10,7 +10,7 @@ function Controls({
   setChangeColour,
   beacon,
   glider,
-  pulsar
+  pulsar,
 }) {
   function randomPresetOne() {
     const rows = [];
@@ -47,11 +47,11 @@ function Controls({
       {/* // Reset state to empty grid */}
       <button onClick={clearGrid}>Clear</button>
 
-      {/* Create premade living and dead cells (sample cell configurations the user can load and run)  */}
       <button onClick={() => randomPresetOne()}>Random 1</button>
 
       <button onClick={() => randomPresetTwo()}>Random 2</button>
 
+      {/* Create premade living and dead cells (sample cell configurations the user can load and run)  */}
       <button onClick={beacon}> Beacon Preset </button>
       <button onClick={glider}> Glider Preset</button>
       <button onClick={pulsar}> Pulsar Preset</button>

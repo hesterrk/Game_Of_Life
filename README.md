@@ -38,5 +38,5 @@ User's can create their own scenario by clicking on any cell, they can also see 
 
  # WishList
 
- -Allowed user to change the speed of the animation
+ -Allowed user to change the speed of the animation and the size of the grid
  -Try animation in 3D

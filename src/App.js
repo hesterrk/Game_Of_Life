@@ -10,7 +10,7 @@ function App() {
   // Size state
   const [gridSize] = useState(25);
 
-  //Toggle size, 25 is default size
+  //Toggle size
   // const [isDefaultSize, setIsDefaultSize] = useState(true);
 
   // Creating data structure: an row array with nested column arrays
@@ -32,8 +32,6 @@ function App() {
   }
 
   // 25 x 25 dimension
-  // const twoDGrid = createDataStructure(25, 25);
-  // Change --> trialling
   const twoDGrid = createDataStructure(gridSize, gridSize);
 
   //Grid state
