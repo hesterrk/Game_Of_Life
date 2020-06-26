@@ -9,7 +9,8 @@ function Controls({
   changeColour,
   setChangeColour,
   beacon,
-  glider
+  glider,
+  pulsar
 }) {
   function randomPresetOne() {
     const rows = [];
@@ -53,6 +54,8 @@ function Controls({
 
       <button onClick={beacon}> Beacon Preset </button>
       <button onClick={glider}> Glider Preset</button>
+      <button onClick={pulsar}> Pulsar Preset</button>
+
       <label>
         <input
           type="checkbox"

@@ -193,6 +193,92 @@ function App() {
     return grid;
   }
 
+  // Preset 3: Pulsar
+
+  function pulsar() {
+    const rows = [];
+    for (let i = 0; i < 25; i++) {
+      const nestedCols = Array.from(new Array(25), () => {
+        return 0;
+      });
+      if (i === 2) {
+        nestedCols[5] = 1;
+        nestedCols[6] = 1;
+        nestedCols[7] = 1;
+        nestedCols[11] = 1;
+        nestedCols[12] = 1;
+        nestedCols[13] = 1;
+      }
+
+      if (i === 4) {
+        nestedCols[3] = 1;
+        nestedCols[8] = 1;
+        nestedCols[10] = 1;
+        nestedCols[15] = 1;
+      }
+      if (i === 5) {
+        nestedCols[3] = 1;
+        nestedCols[8] = 1;
+        nestedCols[10] = 1;
+        nestedCols[15] = 1;
+      }
+      if (i === 6) {
+        nestedCols[3] = 1;
+        nestedCols[8] = 1;
+        nestedCols[10] = 1;
+        nestedCols[15] = 1;
+      }
+
+      if (i === 7) {
+        nestedCols[5] = 1;
+        nestedCols[6] = 1;
+        nestedCols[7] = 1;
+        nestedCols[11] = 1;
+        nestedCols[12] = 1;
+        nestedCols[13] = 1;
+      }
+
+      if (i === 9) {
+        nestedCols[5] = 1;
+        nestedCols[6] = 1;
+        nestedCols[7] = 1;
+        nestedCols[11] = 1;
+        nestedCols[12] = 1;
+        nestedCols[13] = 1;
+      }
+      if (i === 10) {
+        nestedCols[3] = 1;
+        nestedCols[8] = 1;
+        nestedCols[10] = 1;
+        nestedCols[15] = 1;
+      }
+      if (i === 11) {
+        nestedCols[3] = 1;
+        nestedCols[8] = 1;
+        nestedCols[10] = 1;
+        nestedCols[15] = 1;
+      }
+      if (i === 12) {
+        nestedCols[3] = 1;
+        nestedCols[8] = 1;
+        nestedCols[10] = 1;
+        nestedCols[15] = 1;
+      }
+      if (i === 14) {
+        nestedCols[5] = 1;
+        nestedCols[6] = 1;
+        nestedCols[7] = 1;
+        nestedCols[11] = 1;
+        nestedCols[12] = 1;
+        nestedCols[13] = 1;
+      }
+
+      rows.push(nestedCols);
+    }
+    setGrid(rows);
+    return grid;
+  }
+
   // Animation Logic function, animation runs accordingly
   // The logic which determines our animation: state of cell and neighbours state
   //  Iterating over our grid: for each cell we check neighbours state
@@ -307,6 +393,7 @@ function App() {
         setChangeColour={setChangeColour}
         beacon={beacon}
         glider={glider}
+        pulsar={pulsar}
       />
 
       <h3> Generation: {gen}</h3>
