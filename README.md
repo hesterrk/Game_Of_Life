@@ -2,6 +2,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 # Conway's Game Of Life
 
+# Deployed Version
+
+https://game-of-life-mu-jade.vercel.app/
+
 # About 
 
 This purpose of this app is for a user to be able to run different "Game of Life" scenarios. 
