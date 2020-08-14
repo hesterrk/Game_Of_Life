@@ -29,7 +29,9 @@ User's can create their own scenario by clicking on any cell, they can also see 
 -To get this project up and running on your local:
 
 1) Clone this repository
+
 2) npm install --> essential dependencies
+
 3) npm run server --> start your local server
 
 # Technologies Used  
@@ -39,5 +41,6 @@ User's can create their own scenario by clicking on any cell, they can also see 
 
  # WishList
 
- -Allowed user to change the speed of the animation and the size of the grid
+ -Allow user to change the speed of the animation and the size of the grid
+ 
  -Try animation in 3D
