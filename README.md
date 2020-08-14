@@ -34,10 +34,7 @@ User's can create their own scenario by clicking on any cell, they can also see 
 
 # Technologies Used  
  
- -React
- -Immer 
- -Javascript
- -CSS
+ -React, Javascript, CSS
 
 
  # WishList
