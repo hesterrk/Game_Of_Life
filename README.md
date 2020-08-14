@@ -6,7 +6,21 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 https://game-of-life-mu-jade.vercel.app/
 
-# About 
+
+
+# About the Game Of Life
+
+-GOL is a program that simulates a 2D-cellular automaton. CA is represented by a grid of cells in this project.
+
+-Each cell in the grid is defined as an entity which has its own state (alive or dead, black or white)
+
+-Each cell has a neighbourhood (8 cells surrounding it) —> this is important as a cell’s change in state is determined by the rules based on the cell's neighbourhood state.
+
+-Read more about the rules on the project's page!
+
+
+
+# About The Project
 
 This purpose of this app is for a user to be able to run different "Game of Life" scenarios. 
 User's can create their own scenario by clicking on any cell, they can also see random configurations. 
